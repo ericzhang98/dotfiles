@@ -1,0 +1,14 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+  name = Eric Zhang
+  email = zhangeric99@gmail.com
+
+[pull]
+  # rebase = true
+
+[branch]
+  # autosetuprebase = always
+
+[alias]
+  lol = log --graph --oneline --decorate --color --all
