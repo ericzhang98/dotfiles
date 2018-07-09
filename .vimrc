@@ -17,8 +17,3 @@ set modeline
 
 " ctrlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-
-inoremap <c-k> <up>
-inoremap <c-j> <down>
-inoremap <c-h> <left>
-inoremap <c-l> <right>
