@@ -1,0 +1,18 @@
+{
+  "keys": {
+    "command": {
+      "bind": {
+        "ctrl-enter": "jupyter-notebook:run-cell", 
+        "0,0": "jupyter-notebook:interrupt-kernel"
+      }, 
+      "unbind": [
+        "x", 
+        "c", 
+        "0,0"
+      ]
+    }
+  }, 
+  "load_extensions": {
+    "vim_binding/vim_binding": true
+  }
+}
