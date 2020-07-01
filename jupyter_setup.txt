@@ -1,0 +1,2 @@
+Library/Jupyter/nbextensions/vim_binding/lib/jupyter/shortcuts.js -> get rid of cmd-1/2/3 and add ctrl-enter
+copy over .jupyter/custom/custom.js
