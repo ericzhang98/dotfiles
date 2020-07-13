@@ -14,6 +14,3 @@ syntax on
 set incsearch
 set hlsearch
 set modeline
-
-" ctrlp
-set runtimepath^=~/.vim/bundle/ctrlp.vim
