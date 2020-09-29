@@ -1,0 +1,10 @@
+computer setup
+
+adjust system preferences
+install spectacle, flux, alfred, chrome
+import chrome profile
+install league, spotify
+install homebrew, python3, pip3, jupyter
+install matlab
+setup git config and keys
+setup .zshrc or .bashrc
