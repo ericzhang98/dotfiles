@@ -1,0 +1,42 @@
+C++/Python equivalents
+
+Helper functions:
+- *max_element(begin(arr), end(arr)) = max
+- accumulate(begin(arr), end(arr), 0, [](int a, int b){return a+b;}) = sum
+
+Array/DLL:
+    vector = list
+    deque = deque
+        - push_back = append
+        - pop_back = pop
+        - arr.back() = arr[-1]
+        - vector<int> slice(begin(arr)+i, begin(arr)+j) = arr[i:j]
+access element - O(1)
+push/pop from front/back - O(1)
+
+Priority Queue:
+    priority_queue = heapq operations on lists
+        - top() = h[0]
+        - push(tup) = heapq.heappush(h, tup)
+        - pop() = heapq.heappop(h)
+C++ - default max heap, Python - default min heap
+push/pop - O(log n)
+
+RBTree: 
+    multiset = SortedList
+    set = SortedSet
+    map = SortedDict
+(note that sortedcollections actually uses lists of lists)
+insert, lookup, delete - O(log n)
+maintains sorted order so min, max, ceil are O(log n) as well
+
+Hashmap:
+    unordered_set = set
+    unordered_map = dict
+insert, lookup, delete - O(1)
+not sorted
+
+Hashmap + DLL:
+    unordered_set<list::iterator> + list = OrderedDict
+insert, lookup, delete - O(1)
+push/pop from front/back - O(1)
