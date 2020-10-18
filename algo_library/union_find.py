@@ -1,50 +1,56 @@
-ufnode = dict()
+node_to_index = dict()
+index_to_node = []
 parent = []
 size = []
 
-# NO DUPLICATE VALS
-def make_ufnode(val):
-    if val in ufnode: raise Exception
-    i = len(ufnode)
-    ufnode[val] = i
+# NO DUPLICATE NODES
+def make_ufnode(node):
+    if node in node_to_index: raise Exception
+    i = len(node_to_index)
+    node_to_index[node] = i
+    index_to_node.append(node)
     parent.append(i)
     size.append(1)
 
 def find(a):
-    if parent[a] == a:
-        return a
-    parent[a] = find(parent[a])
-    return parent[a]
+    return index_to_node[_find(node_to_index[a])]
 
 def union(a, b):
-    a_root, b_root = find(a), find(b)
+    _union(node_to_index[a], node_to_index[b])
+
+def ufsets():
+    import collections
+    hm = collections.defaultdict(list)
+    for node, idx in node_to_index.items():
+        hm[find(node)].append(index_to_node[idx])
+    return dict(hm)
+
+def _find(a):
+    if parent[a] == a:
+        return a
+    parent[a] = _find(parent[a])
+    return parent[a]
+
+def _union(a, b):
+    a_root, b_root = _find(a), _find(b)
     if a_root != b_root:
         if size[a_root] < size[b_root]:
             a_root, b_root = b_root, a_root
         parent[b_root] = a_root
         size[a_root] += size[b_root]
 
-def ufsets():
-    from collections import defaultdict
-    hm = defaultdict(list)
-    for val, node in ufnode.items():
-        hm[find(node)].append(val)
-    return dict(hm)
-
 
 arr = [100, 200, 300, 400, 500]
 for x in arr:
     make_ufnode(x)
-
-print(ufnode)
-union(ufnode[100], ufnode[200])
-union(ufnode[400], ufnode[500])
+print(node_to_index)
+union(100, 200)
+union(400, 500)
 print(parent)
 print(size)
-union(ufnode[200], ufnode[500])
+union(200, 500)
 print(parent)
 print(size)
-
 print(ufsets())
 
 """
