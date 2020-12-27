@@ -64,6 +64,9 @@ l = l[::-1] # reverse list
 # minq - monotonically increasing, append by popping while back is greater before appending
 # maxq - monotonically decreasing, append by popping while back is lesser before appending
 
+# multiway trie - use temp copies, `temp[x]` to insert x, `x in temp` to check for existence
+Trie = lambda: collections.defaultdict(Trie)
+
 # bisect cases
 def index(a, x):
     'Locate the leftmost value exactly equal to x'
