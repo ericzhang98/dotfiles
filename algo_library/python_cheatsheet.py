@@ -46,6 +46,8 @@ a, b = b, a  # swap elements
 field1, field2 = map(d.get, ["field1", "field2"])  # map dict values to variable name
 (3, 3) > (3, 2) # tuple comparison to break ties for key=
 l = l[::-1] # reverse list
+max(*, default=0)
+sum(*, start=[])
 # list: count(), index()
 # set: discard()
 # enumerate
@@ -186,3 +188,29 @@ def max_subarray(numbers):
             best_end = current_end + 1
 
     return best_sum, best_start, best_end
+
+"""Longest common subsequence"""
+def lcss(text1, text2):
+    m, n = len(text1)+1, len(text2)+1
+    dp = [[0]*n for _ in range(m)]
+    for i in range(m):
+        for j in range(n):
+            cands = [0]
+            if i > 0 and j > 0 and text1[i-1] == text2[j-1]:
+                cands.append(dp[i-1][j-1] + 1)
+            if i > 0:
+                cands.append(dp[i-1][j])
+            if j > 0:
+                cands.append(dp[i][j-1])
+            dp[i][j] = max(cands)
+    return dp[m-1][n-1]
+
+"""Longest increasing sequence (technically not DP)"""
+def lis(nums):
+    n = len(nums)
+    if n == 0: return 0
+    dp = [float('inf')]*n
+    for i in range(n):
+        length = bisect.bisect_left(dp, nums[i])
+        dp[length] = min(dp[length], nums[i])
+    return max(i for i in range(n) if dp[i] != float('inf')) + 1

@@ -14,6 +14,7 @@ com.apple.TextEdit:java
 com.apple.TextEdit:hs
 com.apple.TextEdit:in
 com.apple.TextEdit:out
+com.apple.TextEdit:sh
 eof
 } | grep . |
 while IFS=$':' read bundle_id extension ; do
