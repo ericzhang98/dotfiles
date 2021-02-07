@@ -28,6 +28,8 @@ def residual_flow_path(Gf, s, t):
     return dfs(s)
 
 # make sure G is collections.defaultdict(lambda: collections.defaultdict(int))
+# graph[u][v] = capacity
+# edits the graph by maintaining it as residual graph
 def ford_fulkerson(G, s, t):
     f = collections.defaultdict(int)
     max_flow = 0

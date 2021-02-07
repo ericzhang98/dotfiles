@@ -24,6 +24,8 @@ def bfs(graph, source, sink):
     return True, path
 
 # make sure graph is collections.defaultdict(lambda: collections.defaultdict(int))
+# graph[u][v] = capacity
+# edits the graph by maintaining it as residual graph
 def edmonds_karp(graph, source, sink):
     max_flow = 0
     # augment the flow while there is path from source to sink in residual graph
