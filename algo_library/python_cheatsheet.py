@@ -165,9 +165,10 @@ def is_prime(X):
             return False
     return True
 
+@functools.lru_cache(None)
 def nCk(n, k):
     if k == 0: return 1
-    return n * nCk(n-1, k-1) / k
+    return n * nCk(n-1, k-1) // k
 
 # DP
 """Find a contiguous subarray with the largest sum."""

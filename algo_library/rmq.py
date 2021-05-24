@@ -1,8 +1,8 @@
 """
 Sparse table implementation
 """
-N = 100
 import math
+N = 100
 K = int(math.ceil(math.log(N+1,2)))
 RMQ = [[0 for _ in range(K)] for _ in range(N)]
 
@@ -12,17 +12,15 @@ def build(arr):
         RMQ[i][0] = arr[i]
     for k in range(1, K):
         for i in range(0, N-2**k+1):
-            #print i, N-2**k+1, 2**k
             RMQ[i][k] = min(RMQ[i][k-1], RMQ[i+2**(k-1)][k-1])
 
+# inclusive, exclusive
 def rmquery(i, j):
     length = j-i
     if length == 0: return None
     k = int(math.floor(math.log(length,2)))
-    # print i, k, j-2**k
     left = RMQ[i][k]
     right = RMQ[j-2**k][k]
-    # print left, right
     return min(left, right)
 
 
