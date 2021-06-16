@@ -51,37 +51,39 @@ def dinics(graph, source, sink):
             graph[u][v] -= fuv
             graph[v][u] += fuv
 
-def make_coloring(edges):
-    coloring = [[], []]
+# partitions vertices into disjoint sets
+def bipartition(edges):
+    partitions = [[], []]
     visited = set()
     def dfs(u, color):
         if u in visited:
             return
         visited.add(u)
-        coloring[color].append(u)
+        partitions[color].append(u)
         for v in edges[u]:
             dfs(v, 1-color)
     for u in edges:
         dfs(u, 0)
-    return coloring
+    return partitions 
 
 # max_bipartite_matching == min_vertex_cover == n - max_independent_set
+# edges must be a dict mapping vertex -> [neighbors]
 # make sure edges has every vertex as a key
 def max_bipartite_matching(edges):
-    coloring = make_coloring(edges)
+    left, right = bipartition(edges)
     source, sink = "source", "sink"
     graph = collections.defaultdict(lambda: collections.defaultdict(int))
-    for u in coloring[0]:
+    for u in left:
         graph[source][u] = 1
-    for v in coloring[1]:
+    for v in right:
         graph[v][sink] = 1
-    for u in coloring[0]:
+    for u in left:
         for v in edges[u]:
             graph[u][v] = 1
     return dinics(graph, source, sink)
 
-# https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_7_A
 """
+# https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_7_A
 X, Y, E = map(int, input().split())
 edges = {}
 for x in range(X):
