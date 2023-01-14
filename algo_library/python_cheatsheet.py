@@ -107,9 +107,10 @@ def find_ge(a, x):
 
 # bsearch:
 # to find smallest index satisfying predicate 'gte num' - mid = (hi+lo)/2, if mid >= num: hi = mid, else: lo = mid+1
+# F F F T T T -- first T
 def bsearch(num, lo, hi):
     while lo < hi:
-        mid = (lo + hi) / 2
+        mid = (lo + hi) // 2
         if mid >= num:
             hi = mid
         else:
@@ -118,9 +119,10 @@ def bsearch(num, lo, hi):
     return lo
 
 # to find largest index satisfying predicate 'lte num' - mid = (hi+lo+1)/2, if mid <= num: lo = mid, else: hi = mid-1
+# T T T F F F -- last T
 def bsearch(num, lo, hi):
     while lo < hi:
-        mid = (lo + hi + 1) / 2
+        mid = (lo + hi + 1) // 2
         if mid <= num:
             lo = mid
         else:
@@ -169,6 +171,11 @@ def is_prime(X):
 def nCk(n, k):
     if k == 0: return 1
     return n * nCk(n-1, k-1) // k
+
+@functools.lru_cache(None)
+def fact(n):
+    if n == 0: return 1
+    return n * fact(n-1)
 
 # DP
 """Find a contiguous subarray with the largest sum."""

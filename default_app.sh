@@ -15,6 +15,7 @@ com.apple.TextEdit:hs
 com.apple.TextEdit:in
 com.apple.TextEdit:out
 com.apple.TextEdit:sh
+com.apple.TextEdit:pypy3
 eof
 } | grep . |
 while IFS=$':' read bundle_id extension ; do
